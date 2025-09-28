@@ -315,4 +315,7 @@ if ( ! function_exists( 'alg_wc_wl_pro_on_uninstall' ) ) {
 		Alg_WC_Wish_List_Core::on_uninstall();
 	}
 }
-register_uninstall_hook( __FILE__, 'alg_wc_wl_pro_on_uninstall' );
+// SZ: Only register uninstall hook in admin
+if ( is_admin() && function_exists( 'register_uninstall_hook' ) ) {
+	register_uninstall_hook( __FILE__, 'alg_wc_wl_uninstall' );
+}
